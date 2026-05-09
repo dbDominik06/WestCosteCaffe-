@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Coste Caffe — Concept Presentation · Kraków</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#090807;color:#F4EEE6;font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#cur{width:9px;height:9px;background:#B83A28;border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+#cur-r{width:32px;height:32px;border:1px solid rgba(184,58,40,.35);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .08s linear;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:16px 52px;background:rgba(9,8,7,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(184,58,40,.1);}
+.logo{font-family:‘Bebas Neue’,sans-serif;font-size:26px;letter-spacing:7px;color:#B83A28;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:2px;color:#7A7068;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:#B83A28;}
+
+section{min-height:100vh;padding:120px 64px 90px;position:relative;overflow:hidden;}
+
+/* ── HERO ── */
+#hero{display:flex;flex-direction:column;justify-content:center;padding:0;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:
+radial-gradient(ellipse 60% 55% at 70% 46%,rgba(184,58,40,.07) 0%,transparent 70%),
+radial-gradient(ellipse 40% 40% at 18% 78%,rgba(184,168,152,.04) 0%,transparent 60%),
+repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.012) 80px),
+repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.012) 80px);}
+.hero-grain{display:none;}
+.hero-c{position:relative;z-index:2;padding:120px 80px 0;max-width:1300px;margin:0 auto;width:100%;}
+.eyebrow{font-family:‘DM Mono’,monospace;font-size:11px;letter-spacing:4px;color:#B83A28;text-transform:uppercase;margin-bottom:18px;opacity:0;animation:fadeUp .8s .2s ease forwards;}
+.hero-title{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(90px,16vw,210px);line-height:.86;color:#F4EEE6;opacity:0;animation:fadeUp .8s .4s ease forwards;}
+.hero-sub{font-family:‘DM Mono’,monospace;font-size:clamp(11px,1.1vw,15px);letter-spacing:5px;color:#B8A898;text-transform:uppercase;margin-top:10px;opacity:0;animation:fadeUp .8s .5s ease forwards;}
+.hero-tag{font-size:17px;color:#7A7068;font-weight:300;max-width:460px;line-height:1.75;margin-top:28px;opacity:0;animation:fadeUp .8s .65s ease forwards;}
+.hero-aside{position:absolute;right:80px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-end;gap:6px;opacity:0;animation:fadeIn 1s 1s ease forwards;}
+.hs{text-align:right;} .hs-n{font-family:‘Bebas Neue’,sans-serif;font-size:50px;color:#B83A28;line-height:1;}
+.hs-l{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:2px;color:#7A7068;text-transform:uppercase;}
+.hdiv{width:1px;height:34px;background:rgba(184,58,40,.25);margin-left:auto;}
+.scroll-h{position:absolute;bottom:40px;left:80px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeIn 1s 1.3s ease forwards;}
+.scroll-h span{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:3px;color:#7A7068;text-transform:uppercase;}
+.scroll-ln{width:54px;height:1px;background:#B83A28;animation:pulse 2s 1.5s ease infinite;}
+
+/* LABEL */
+.lbl{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#B83A28;margin-bottom:52px;display:flex;align-items:center;gap:14px;}
+.lbl::after{content:’’;flex:1;height:1px;background:rgba(184,58,40,.2);max-width:100px;}
+.lbl.dark{color:#B83A28;}
+
+/* ── CONCEPT ── */
+#concept{background:#EAE3D8;color:#090807;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.ct{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(46px,5.5vw,74px);line-height:1;color:#090807;margin-bottom:26px;}
+.ct em{color:#B83A28;font-style:normal;}
+.cd{font-size:15px;line-height:1.85;color:#3A3028;font-weight:300;margin-bottom:34px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:1px;padding:6px 13px;border:1px solid #B83A28;color:#B83A28;text-transform:uppercase;}
+.pillars{display:flex;flex-direction:column;}
+.pillar{padding:22px 0;border-bottom:1px solid rgba(58,48,40,.12);display:flex;gap:20px;align-items:flex-start;}
+.pn{font-family:‘Bebas Neue’,sans-serif;font-size:34px;color:rgba(58,48,40,.14);line-height:1;min-width:42px;}
+.pt{font-weight:500;font-size:14px;color:#090807;margin-bottom:4px;}
+.pd{font-size:13px;color:#666;line-height:1.65;font-weight:300;}
+
+/* ── DIFF ── */
+#diff{background:#111009;}
+.dt{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(42px,5.5vw,66px);color:#F4EEE6;margin-bottom:52px;max-width:640px;line-height:1.05;}
+.dt span{color:#B83A28;}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.dc{background:#1C1814;padding:34px 28px;position:relative;overflow:hidden;transition:background .3s;}
+.dc:hover{background:#211D18;}
+.di{font-size:28px;margin-bottom:16px;display:block;}
+.dct{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:9px;}
+.dcd{font-size:13px;color:#7A7068;line-height:1.7;font-weight:300;}
+.db{position:absolute;bottom:0;left:0;width:100%;height:2px;background:#B83A28;transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.dc:hover .db{transform:scaleX(1);}
+
+/* ── MENU ── */
+#menu{background:#2E2820;}
+.mh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;}
+.mt{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(50px,7vw,90px);color:#F4EEE6;line-height:.92;}
+.mn{font-family:‘DM Mono’,monospace;font-size:10px;color:rgba(244,238,230,.38);letter-spacing:2px;max-width:180px;text-align:right;line-height:1.9;text-transform:uppercase;}
+
+/* coffee size grid */
+.coffee-section{margin-bottom:32px;}
+.coffee-label{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:3px;color:#B83A28;text-transform:uppercase;margin-bottom:18px;}
+.coffee-table{width:100%;border-collapse:collapse;}
+.coffee-table thead th{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:2px;color:#7A7068;text-transform:uppercase;padding:8px 12px;text-align:center;border-bottom:1px solid rgba(244,238,230,.06);}
+.coffee-table thead th:first-child{text-align:left;}
+.coffee-table tbody tr{border-bottom:1px solid rgba(244,238,230,.05);}
+.coffee-table tbody tr:last-child{border-bottom:none;}
+.coffee-table tbody td{padding:11px 12px;font-size:13px;color:#F4EEE6;text-align:center;vertical-align:middle;}
+.coffee-table tbody td:first-child{font-size:14px;text-align:left;color:#F4EEE6;}
+.coffee-table tbody td:last-child{font-size:11px;color:#7A7068;text-align:left;font-weight:300;}
+.size-pill{display:inline-block;width:28px;height:28px;border-radius:50%;background:rgba(184,58,40,.12);border:1px solid rgba(184,58,40,.3);font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:1px;color:#B83A28;line-height:28px;text-align:center;}
+.size-pill.lg{width:36px;height:36px;line-height:36px;font-size:11px;border-color:#B83A28;background:rgba(184,58,40,.22);}
+
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:28px;}
+.food-cat{background:rgba(0,0,0,.2);padding:28px;}
+.food-cat-title{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:3px;color:#B83A28;text-transform:uppercase;margin-bottom:18px;}
+.food-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(244,238,230,.06);}
+.food-item:last-child{border-bottom:none;}
+.fi-name{font-size:14px;color:#F4EEE6;}
+.fi-desc{font-size:11px;color:rgba(244,238,230,.35);margin-top:2px;font-weight:300;}
+
+/* ── TECH ── */
+#tech{background:#0B0A08;}
+.tech-title{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(42px,5.5vw,66px);margin-bottom:12px;}
+.tech-sub{font-size:15px;color:#7A7068;font-weight:300;margin-bottom:52px;max-width:480px;line-height:1.7;}
+.tg{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.ti{border:1px solid #2A2218;padding:28px;transition:border-color .3s;}
+.ti:hover{border-color:#B83A28;}
+.tih{display:flex;align-items:center;gap:11px;margin-bottom:11px;}
+.tdot{width:7px;height:7px;background:#B83A28;border-radius:50%;flex-shrink:0;}
+.tit{font-family:‘Bebas Neue’,sans-serif;font-size:20px;letter-spacing:1px;}
+.tid{font-size:13px;color:#7A7068;line-height:1.7;font-weight:300;padding-left:18px;}
+
+/* ── TEAM ── */
+#team{background:#EAE3D8;color:#090807;}
+.team-title{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(46px,6vw,78px);line-height:1;margin-bottom:14px;}
+.team-title span{color:#B83A28;}
+.team-intro{font-size:15px;color:#555;font-weight:300;max-width:560px;line-height:1.85;margin-bottom:48px;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:36px;}
+.tc{background:rgba(58,48,40,.07);padding:28px;border-top:2px solid #B83A28;}
+.trole{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:3px;color:#B83A28;text-transform:uppercase;margin-bottom:9px;}
+.tname{font-size:16px;font-weight:500;color:#090807;margin-bottom:7px;}
+.tval{font-size:13px;color:#666;line-height:1.65;font-weight:300;}
+.content-box{background:#B83A28;padding:36px 42px;display:grid;grid-template-columns:1fr 2fr;gap:36px;align-items:center;}
+.cb-t{font-family:‘Bebas Neue’,sans-serif;font-size:38px;color:#F4EEE6;line-height:1.05;}
+.cb-d{font-size:14px;color:rgba(244,238,230,.88);line-height:1.85;font-weight:300;}
+.cb-d strong{color:#F4EEE6;font-weight:500;}
+.platforms{display:flex;gap:12px;margin-top:16px;}
+.plat{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:2px;padding:6px 14px;border:1px solid rgba(244,238,230,.4);color:rgba(244,238,230,.8);text-transform:uppercase;}
+
+/* ── ROADMAP ── */
+#roadmap{background:#1C1814;}
+.rt{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(46px,6.5vw,82px);line-height:1;margin-bottom:72px;}
+.rt span{color:#B83A28;}
+.timeline{position:relative;padding-left:44px;}
+.timeline::before{content:’’;position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(184,58,40,.18);}
+.tli{position:relative;padding-bottom:48px;}
+.tli:last-child{padding-bottom:0;}
+.tldot{position:absolute;left:-50px;top:6px;width:11px;height:11px;background:#2E2820;border:1px solid #B83A28;border-radius:50%;}
+.tldot.now{background:#B83A28;box-shadow:0 0 0 4px rgba(184,58,40,.2);}
+.tlp{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:3px;color:#B83A28;text-transform:uppercase;margin-bottom:7px;}
+.tltt{font-size:18px;font-weight:500;color:#F4EEE6;margin-bottom:7px;}
+.tld{font-size:13px;color:#7A7068;line-height:1.75;font-weight:300;max-width:540px;}
+
+/* ── FOUNDER ── */
+#founder{background:#090807;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start;}
+.ftitle{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(42px,5.5vw,66px);line-height:1;margin-bottom:26px;}
+.ftitle span{color:#B83A28;}
+.fbio{font-size:15px;color:#7A7068;line-height:1.85;font-weight:300;margin-bottom:34px;}
+.fstats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.fst{border-top:1px solid #1C1814;padding-top:16px;}
+.fsn{font-family:‘Bebas Neue’,sans-serif;font-size:38px;color:#B83A28;line-height:1;}
+.fsl{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:2px;color:#7A7068;text-transform:uppercase;margin-top:4px;line-height:1.5;}
+.qbox{background:#1C1814;padding:42px;position:relative;}
+.qmark{font-family:‘Bebas Neue’,sans-serif;font-size:100px;color:#B83A28;opacity:.1;position:absolute;top:-14px;left:26px;line-height:1;}
+.quote{font-size:20px;color:#F4EEE6;line-height:1.65;font-weight:300;position:relative;z-index:1;}
+.quote em{color:#B83A28;font-style:normal;}
+
+/* ── CLOSING ── */
+#closing{background:#B83A28;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:55vh;padding:80px 48px;}
+.clst{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(70px,14vw,170px);color:#090807;line-height:.86;margin-bottom:24px;}
+.clsub{font-family:‘DM Mono’,monospace;font-size:11px;letter-spacing:3px;color:rgba(9,8,7,.4);text-transform:uppercase;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+nav{padding:14px 20px;} .nav-links{display:none;}
+section{padding:88px 20px 60px;} .hero-c{padding:88px 20px 0;}
+.hero-aside,.scroll-h{display:none;}
+.cg,.dcards,.food-grid,.tg,.team-grid,.fg,.content-box{grid-template-columns:1fr;}
+}
+</style>
+
+</head>
+<body>
+<div id="cur"></div><div id="cur-r"></div>
+
+<nav>
+  <div class="logo">WCC</div>
+  <ul class="nav-links">
+    <li><a href="#concept">Koncept</a></li>
+    <li><a href="#diff">Wyróżniki</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#tech">Tech</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#roadmap">Roadmapa</a></li>
+    <li><a href="#founder">Founderzy</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grain"></div>
+  <div class="hero-c">
+    <div class="eyebrow">Kraków · Concept Presentation · 2026</div>
+    <div class="hero-title">WEST<br>COSTE</div>
+    <div class="hero-sub">Coffee House — Kraków</div>
+    <p class="hero-tag">Kawiarnia zbudowana na kulturze, betonie i autentyczności.<br>Nie lokal — miejsce które się pamięta.</p>
+  </div>
+  <div class="hero-aside">
+    <div class="hs"><div class="hs-n">4–6</div><div class="hs-l">Lata do otwarcia</div></div>
+    <div class="hdiv"></div>
+    <div class="hs"><div class="hs-n">100%</div><div class="hs-l">Card only</div></div>
+    <div class="hdiv"></div>
+    <div class="hs"><div class="hs-n">KRK</div><div class="hs-l">Lokalizacja</div></div>
+  </div>
+  <div class="scroll-h"><div class="scroll-ln"></div><span>Scroll</span></div>
+</section>
+
+<!-- CONCEPT -->
+
+<section id="concept">
+  <div class="lbl">01 — Koncept</div>
+  <div class="cg">
+    <div>
+      <h2 class="ct reveal">Kawiarnia która<br><em>rozumie</em><br>kulturę.</h2>
+      <p class="cd reveal">West Coste Caffe to nie kolejna kawiarnia z latte art na białej ścianie. To przestrzeń zbudowana na estetyce amerykańskiej ulicy — industrial, beton, rap, autentyczność. Miejsce gdzie ktoś w wieku 18–30 lat czuje się jak u siebie, nie w korporacyjnym łańcuchu.</p>
+      <div class="tags reveal">
+        <span class="tag">American Style</span><span class="tag">Rap Culture</span><span class="tag">Instagram Friendly</span><span class="tag">Paper Packaging</span><span class="tag">Card Only</span><span class="tag">Seasonal Menu</span><span class="tag">Industrial · Beton · Stal</span><span class="tag">Kraków</span>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal"><div class="pn">01</div><div><div class="pt">Doświadczenie, nie transakcja</div><div class="pd">Klient wchodzi po przeżycie. Surowy beton, stal, muzyka i packaging tworzą jedną spójną narrację marki.</div></div></div>
+      <div class="pillar reveal"><div class="pn">02</div><div><div class="pt">Produkt bez kompromisów</div><div class="pd">Kawa w 3 rozmiarach — 250 ml, 355 ml, 473 ml. Grillowane kanapki. Menu sezonowe — zawsze powód żeby wrócić.</div></div></div>
+      <div class="pillar reveal"><div class="pn">03</div><div><div class="pt">Technologia w tle</div><div class="pd">Tablety do zamówień, GOPOS, aplikacja lojalnościowa. Obsługa szybka, bezgotówkowa, bezproblemowa.</div></div></div>
+      <div class="pillar reveal"><div class="pn">04</div><div><div class="pt">Treść sama się tworzy</div><div class="pd">Przestrzeń zaprojektowana pod content. Klient robi marketing organicznie — każde zdjęcie to zasięg marki.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFF -->
+
+<section id="diff">
+  <div class="lbl">02 — Wyróżniki</div>
+  <h2 class="dt reveal">Dlaczego <span>West Coste</span><br>wygra Kraków.</h2>
+  <div class="dcards">
+    <div class="dc reveal"><span class="di">🎵</span><div class="dct">Kultura jako produkt</div><div class="dcd">Rap, streetwear, autentyczność. Gen Z nie chce kolejnej kawiarni — chce miejsca które ich rozumie. West Coste buduje to od fundamentów.</div><div class="db"></div></div>
+    <div class="dc reveal"><span class="di">📱</span><div class="dct">Cashless & Tech-first</div><div class="dcd">Tylko karta, tablety, GOPOS, aplikacja. Mniej błędów, szybsza obsługa, lepsze dane o klientach. Konkurencja nadal liczy resztę.</div><div class="db"></div></div>
+    <div class="dc reveal"><span class="di">☕</span><div class="dct">Kawa w 3 rozmiarach</div><div class="dcd">250 ml, 355 ml, 473 ml — jak pojemności Red Bulla. Każda kawa dostępna w każdym rozmiarze, z opcją extra shotów espresso. Prosto, czytelnie, szybko.</div><div class="db"></div></div>
+    <div class="dc reveal"><span class="di">🌿</span><div class="dct">Ekologiczny packaging</div><div class="dcd">Tylko papier i karton. Zero plastiku. Dla targetowanej grupy to nie trend — to standard który weryfikują zanim wejdą.</div><div class="db"></div></div>
+    <div class="dc reveal"><span class="di">📸</span><div class="dct">Industrial design</div><div class="dcd">Surowy beton, stal, ceglane detale — przestrzeń zaprojektowana pod content. Klient robi marketing za nas, za darmo, każdego dnia.</div><div class="db"></div></div>
+    <div class="dc reveal"><span class="di">🧾</span><div class="dct">Menu sezonowe</div><div class="dcd">Co sezon nowe pozycje i limitowane edycje. Kreuje FOMO, napędza powroty i daje stały feed contentu na social media.</div><div class="db"></div></div>
+  </div>
+</section>
+
+<!-- MENU -->
+
+<section id="menu">
+  <div class="lbl">03 — Menu</div>
+  <div class="mh">
+    <h2 class="mt reveal">MENU<br>PREVIEW</h2>
+    <div class="mn reveal">Rozmiary:<br>250ml · 355ml · 473ml</div>
+  </div>
+
+  <div class="coffee-section reveal">
+    <div class="coffee-label">☕ Kawa — stała karta</div>
+    <table class="coffee-table">
+      <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>250 ml</th>
+          <th>355 ml</th>
+          <th>473 ml</th>
+          <th>Opis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Espresso</td>
+          <td>✓</td><td>✓</td><td>✓</td>
+          <td>Klasyczny, intensywny — baza wszystkiego</td>
+        </tr>
+        <tr>
+          <td>Doppio</td>
+          <td>✓</td><td>✓</td><td>✓</td>
+          <td>Podwójny shot, dla tych co wiedzą czego chcą</td>
+        </tr>
+        <tr>
+          <td>Americano</td>
+          <td>✓</td><td>✓</td><td>✓</td>
+          <td>Espresso + woda — czysty smak, zero kompromisów</td>
+        </tr>
+        <tr>
+          <td>Flat White</td>
+          <td>✓</td><td>✓</td><td>✓</td>
+          <td>2 shoty, microfoam, małe i mocne</td>
+        </tr>
+        <tr>
+          <td>Cappuccino</td>
+          <td>✓</td><td>✓</td><td>✓</td>
+          <td>Espresso, mleko, gęsta pianka — klasyk</td>
+        </tr>
+        <tr>
+          <td>Latte</td>
+          <td>✓</td><td>✓</td><td>✓</td>
+          <td>Espresso + dużo mleka — najłagodniejszy</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:#7A7068;letter-spacing:2px;text-transform:uppercase;">+ Opcja extra shot espresso do każdej kawy · Alternatywy mleczne dostępne</div>
+  </div>
+
+  <div class="food-grid reveal" style="grid-template-columns:1fr;">
+    <div class="food-cat">
+      <div class="food-cat-title">🥪 Grillowane kanapki — stała karta</div>
+      <div class="food-item"><div><div class="fi-name">Grilled Club</div><div class="fi-desc">Kurczak, cheddar, karmelizowana cebula</div></div></div>
+      <div class="food-item"><div><div class="fi-name">West Coste Melt</div><div class="fi-desc">Trzy sery, truflowe masło, sourdough</div></div></div>
+      <div class="food-item"><div><div class="fi-name">Smoked Beef</div><div class="fi-desc">Wołowina, jalapeño, sos BBQ, brioche</div></div></div>
+      <div class="food-item"><div><div class="fi-name">Seasonal Special</div><div class="fi-desc">Nowa kanapka co sezon — zmienia się razem z menu kawowym</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+
+<section id="tech">
+  <div class="lbl">04 — Technologia</div>
+  <h2 class="tech-title reveal">Tech Stack<br>Lokalu</h2>
+  <p class="tech-sub reveal">Kawiarnia która działa szybciej, zbiera dane i nie traci pieniędzy na błędy ludzkie.</p>
+  <div class="tg">
+    <div class="ti reveal"><div class="tih"><div class="tdot"></div><div class="tit">GOPOS — System POS</div></div><div class="tid">Zarządzanie zamówieniami, inventory i raporty sprzedaży w czasie rzeczywistym. Integracja z tabletami i aplikacją lojalnościową.</div></div>
+    <div class="ti reveal"><div class="tih"><div class="tdot"></div><div class="tit">Tablety do Zamówień</div></div><div class="tid">Zamiast kasy fisycznej — tablety przy ladzie. Szybciej, mniej błędów, nowoczesne doświadczenie dla klienta który nie chce czekać.</div></div>
+    <div class="ti reveal"><div class="tih"><div class="tdot"></div><div class="tit">Card Only</div></div><div class="tid">Zero gotówki w lokalu. Bezpieczniej, szybciej, mniej rozbieżności na koniec dnia. Standard zachodnich kawiarni od 5 lat.</div></div>
+    <div class="ti reveal"><div class="tih"><div class="tdot"></div><div class="tit">Aplikacja Lojalnościowa</div></div><div class="tid">Zbieranie punktów, powiadomienia o nowościach sezonowych, historia zamówień. Bezpośredni kanał do klienta — niezależny od algorytmów.</div></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+
+<section id="team">
+  <div class="lbl">05 — Team & Budowa</div>
+  <h2 class="team-title reveal">Nie robimy tego <span>sami.</span><br><span>Ale prawie.</span></h2>
+  <p class="team-intro reveal">Za projektem stoi gotowa siatka specjalistów — zaufani ludzie którzy zrobią swoją robotę po kosztach. To oszczędność dziesiątek tysięcy złotych jeszcze przed otwarciem.</p>
+
+  <div class="team-grid">
+    <div class="tc reveal">
+      <div class="trole">Founderzy</div>
+      <div class="tname">Dominik + Kuzyn</div>
+      <div class="tval">Wspólne prowadzenie lokalu. Dominik — strategia, system, marketing i wizja marki. Kuzyn — operacje i zarządzanie na miejscu. Dwie głowy, jeden cel.</div>
+    </div>
+    <div class="tc reveal">
+      <div class="trole">Instalacje</div>
+      <div class="tname">Elektryk + Hydraulik</div>
+      <div class="tval">Zaufani fachowcy z sieci kontaktów. Instalacje elektryczne i hydrauliczne po kosztach — bez marży pośredników i firm wykonawczych.</div>
+    </div>
+    <div class="tc reveal">
+      <div class="trole">Tech & Visual</div>
+      <div class="tname">Programista + Fotografka</div>
+      <div class="tval">Aplikacja lojalnościowa i strona robione wewnętrznie. Profesjonalne zdjęcia produktów i wnętrza — bez kosztów agencji kreatywnej.</div>
+    </div>
+  </div>
+
+  <div class="content-box reveal">
+    <div class="cb-t">BUDUJEMY<br>NA ŻYWO</div>
+    <div class="cb-d">
+      Wykończenie wnętrza robimy sami i <strong>dokumentujemy każdy etap</strong> — od surowego lokalu do gotowej kawiarni.<br><br>
+      Seria dokumentalna z budowy West Coste Caffe publikowana na wszystkich platformach. Obserwatorzy stają się pierwszymi klientami zanim napiszemy pierwsze menu.
+      <div class="platforms">
+        <span class="plat">YouTube</span>
+        <span class="plat">TikTok</span>
+        <span class="plat">Instagram</span>
+      </div>
+      <br><strong>Marketing za 0 złotych. Społeczność zanim otworzymy drzwi.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+
+<section id="roadmap">
+  <div class="lbl">06 — Roadmapa</div>
+  <h2 class="rt reveal">Droga do<br><span>Krakowa.</span></h2>
+  <div class="timeline">
+    <div class="tli reveal">
+      <div class="tldot now"></div>
+      <div class="tlp">Kwiecień 2026 — Teraz · Aktywna faza</div>
+      <div class="tltt">Faza 0: Fundament</div>
+      <div class="tld">Dominik pracuje jako barista — nauka od środka, badanie krakowskiego rynku kawiarni, obserwacja klientów i ich zachowań. 50% każdej wypłaty inwestowane w ETF MSCI ACC. Równolegle: budowanie systemu osobistego opartego na protokołach Hubermana, deep work 90 min dziennie, nauka psychologii, neurobiologii i biohackingu. Siatka kontaktów (elektryk, hydraulik, programista, fotografka) gotowa do działania.</div>
+    </div>
+    <div class="tli reveal">
+      <div class="tldot"></div>
+      <div class="tlp">2026 — 2027</div>
+      <div class="tltt">Faza 1: Wiedza i Kapitał</div>
+      <div class="tld">Głęboki research rynku F&B w Krakowie — analiza dzielnic, ruchu pieszego, demographic targetowanej grupy 18–30 lat. Mapowanie konkurencji: które kawiarnie działają, dlaczego, co im brakuje. Akumulacja kapitału startowego. Pierwsze rozmowy z potencjalnymi inwestorami, wspólnikami lub instytucjami finansującymi. Finalizacja modelu biznesowego i konceptu menu.</div>
+    </div>
+    <div class="tli reveal">
+      <div class="tldot"></div>
+      <div class="tlp">2027 — 2029</div>
+      <div class="tltt">Faza 2: Przygotowanie, Budowa i Marka</div>
+      <div class="tld">Wybór lokalizacji w Krakowie, projekt wnętrza industrialnego — beton, stal, cegła. Negocjacje najmu. Wykończenie lokalu własnymi rękami z teamem. Start serii dokumentalnej z całej budowy na YouTube, TikTok i Instagram — marka żyje i zbiera obserwatorów zanim lokal istnieje. Rekrutacja i szkolenie pierwszego zespołu. Finalizacja systemów: GOPOS, tablety, aplikacja lojalnościowa.</div>
+    </div>
+    <div class="tli reveal">
+      <div class="tldot"></div>
+      <div class="tlp">2029 — 2032</div>
+      <div class="tltt">Faza 3: Otwarcie i Skalowanie</div>
+      <div class="tld">Oficjalne otwarcie pierwszego West Coste Caffe w Krakowie — z gotową społecznością zbudowaną podczas fazy budowy. Testowanie modelu operacyjnego, optymalizacja procesów i kosztów. Analiza rentowności, zbieranie danych z GOPOS. Przy potwierdzonym sukcesie — plan drugiej lokalizacji w Krakowie lub ekspansja na inne miasto w Polsce.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+
+<section id="founder">
+  <div class="lbl">07 — Founderzy</div>
+  <div class="fg">
+    <div>
+      <h2 class="ftitle reveal">Kto za tym <span>stoi.</span></h2>
+      <p class="fbio reveal">
+        <strong style="color:#F4EEE6">Dominik</strong> — 20 lat, Kraków. Analityczny mózg, mocna siatka kontaktów i obsesja na punkcie systemów. Od 15 kwietnia 2026 wdraża protokół 1% — codziennie lepszy niż wczoraj. Uczy się biznesu od podstaw pracując jako barista i badając rynek od środka.<br><br>
+        <strong style="color:#F4EEE6">Kuzyn</strong> — wspólnik operacyjny. Razem tworzą tandem który pokrywa całą operację — od długoterminowej strategii po codzienne zarządzanie lokalem. Dwóch founderów, jedno DNA marki.
+      </p>
+      <div class="fstats reveal">
+        <div class="fst"><div class="fsn">20</div><div class="fsl">Lat<br>Dominik</div></div>
+        <div class="fst"><div class="fsn">50%</div><div class="fsl">Dochodów<br>inwestowane</div></div>
+        <div class="fst"><div class="fsn">6+</div><div class="fsl">Specjalistów<br>w sieci</div></div>
+      </div>
+    </div>
+    <div class="qbox reveal">
+      <div class="qmark">"</div>
+      <div class="quote">Nie buduję kawiarni. Buduję <em>markę która stanie się częścią kultury</em> pokolenia które właśnie przejmuje Kraków.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+
+<section id="closing">
+  <h2 class="clst">LET'S<br>TALK.</h2>
+  <p class="clsub">Dziękuję za uwagę · West Coste Caffe · Kraków 2026</p>
+</section>
+
+<script>
+  const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const all=document.querySelectorAll('.reveal');
+        const i=Array.from(all).indexOf(e.target)%4;
+        setTimeout(()=>e.target.classList.add('visible'),i*70);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+
+</body>
+</html>
