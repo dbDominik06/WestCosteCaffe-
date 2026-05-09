@@ -1,2 +1,0 @@
-# WestCosteCaffe-
-Biznes plan 
