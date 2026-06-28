@@ -808,6 +808,159 @@
     .menu-panel::-webkit-scrollbar { width: 3px; }
     .menu-panel::-webkit-scrollbar-track { background: transparent; }
     .menu-panel::-webkit-scrollbar-thumb { background: rgba(232,69,26,0.2); border-radius: 2px; }
+
+    /* ── BEHAVIORAL / NEUROMARKETING ENHANCEMENTS ── */
+
+    /* Popular badge — social proof ring */
+    .badge-popular {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 2px;
+      background: rgba(232,69,26,0.14);
+      color: var(--gold);
+      border: 1px solid rgba(232,69,26,0.30);
+      margin-top: 4px;
+    }
+    .badge-popular::before {
+      content: '●';
+      font-size: 6px;
+      color: var(--amber);
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Chef's pick / Signature premium badge */
+    .badge-chef {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 2px;
+      background: rgba(245,166,35,0.10);
+      color: var(--amber);
+      border: 1px solid rgba(245,166,35,0.25);
+      margin-top: 4px;
+    }
+
+    /* Scarcity / Limited badge */
+    .badge-limited {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.04);
+      color: rgba(240,235,227,0.50);
+      border: 1px solid rgba(255,255,255,0.10);
+      margin-top: 4px;
+    }
+
+    /* Size row — highlight the nudge "recommended" size */
+    .size-row.recommended .size-price {
+      color: var(--amber);
+    }
+    .size-row.recommended .size-label {
+      color: var(--amber);
+    }
+    .size-row.recommended::after {
+      content: attr(data-nudge);
+      font-size: 7px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0.70;
+      white-space: nowrap;
+    }
+
+    /* Item highlight — anchor product (premium item placed first) */
+    .menu-item.anchor {
+      position: relative;
+    }
+    .menu-item.anchor::before {
+      content: '';
+      position: absolute;
+      left: -52px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, rgba(232,69,26,0.5), transparent);
+      border-radius: 1px;
+    }
+
+    /* Sensory descriptor pill */
+    .sensory-tag {
+      display: inline-block;
+      font-size: 8px;
+      font-weight: 400;
+      letter-spacing: 0.10em;
+      font-style: italic;
+      color: var(--mocha);
+      margin-top: 3px;
+    }
+
+    /* Nudge banner — top of panel */
+    .menu-nudge-banner {
+      background: rgba(232,69,26,0.07);
+      border: 1px solid rgba(232,69,26,0.15);
+      border-radius: 3px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .menu-nudge-icon { font-size: 14px; flex-shrink: 0; }
+    .menu-nudge-text {
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(240,235,227,0.60);
+      line-height: 1.5;
+    }
+    .menu-nudge-text strong { font-weight: 600; color: var(--gold); }
+
+    /* Sandwich combo upsell strip */
+    .menu-combo-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245,166,35,0.06);
+      border: 1px solid rgba(245,166,35,0.15);
+      border-radius: 3px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+    }
+    .combo-icon { font-size: 14px; flex-shrink: 0; }
+    .combo-text {
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(240,235,227,0.60);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .combo-text strong { font-weight: 600; color: var(--amber); }
+    .combo-price {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--amber);
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -916,61 +1069,32 @@
       <!-- ── COFFEE ── -->
       <div class="menu-cat active" id="cat-coffee">
 
-        <div class="menu-shot-info">
-          <div class="menu-shot-icon">☕</div>
-          <div class="menu-shot-text" data-pl="Standardowa ilość shotów: <strong>Cappuccino</strong> — 3 (L) / 2 (M) / 1 (S). <strong>Pozostałe kawy</strong> — 2 (S) / 3 (M) / 4 (L). Możliwość rezygnacji lub dołożenia shota. <strong>Dodatkowy shot +9 zł.</strong>" data-en="Standard shots: <strong>Cappuccino</strong> — 3 (L) / 2 (M) / 1 (S). <strong>Other drinks</strong> — 2 (S) / 3 (M) / 4 (L). You can remove or add a shot. <strong>Extra shot +9 PLN.</strong>">Standardowa ilość shotów: <strong>Cappuccino</strong> — 3 (L) / 2 (M) / 1 (S). <strong>Pozostałe kawy</strong> — 2 (S) / 3 (M) / 4 (L). Możliwość rezygnacji lub dołożenia shota. <strong>Dodatkowy shot +9 zł.</strong></div>
+        <!-- NUDGE BANNER — social proof + authority -->
+        <div class="menu-nudge-banner">
+          <div class="menu-nudge-icon">☕</div>
+          <div class="menu-shot-text" data-pl="Specialty espresso z <strong>certyfikowanej ziarnistości single-origin</strong>. Każdy drink dostępny w S / M / L z indywidualnym doborem shotów. <strong>Dodatkowy shot +9 zł.</strong>" data-en="Specialty espresso from <strong>certified single-origin beans</strong>. Every drink in S / M / L with custom shot count. <strong>Extra shot +9 PLN.</strong>">Specialty espresso z <strong>certyfikowanej ziarnistości single-origin</strong>. Każdy drink dostępny w S / M / L z indywidualnym doborem shotów. <strong>Dodatkowy shot +9 zł.</strong></div>
         </div>
 
-        <div class="menu-shot-info" style="margin-top:8px;">
+        <div class="menu-shot-info" style="margin-top:0; margin-bottom:20px;">
           <div class="menu-shot-icon">🥛</div>
-          <div class="menu-shot-text" data-pl="Mleko roślinne do każdej kawy: <strong>kokosowe lub owsiane</strong> — zamiana za <strong>+2,50 zł.</strong>" data-en="Plant-based milk available for any drink: <strong>coconut or oat</strong> — swap for <strong>+2.50 PLN.</strong>">Mleko roślinne do każdej kawy: <strong>kokosowe lub owsiane</strong> — zamiana za <strong>+2,50 zł.</strong></div>
+          <div class="menu-shot-text" data-pl="Mleko roślinne: <strong>kokosowe lub owsiane</strong> — zamiana za <strong>+2,50 zł.</strong> Kremowe, bez kompromisów." data-en="Plant-based milk: <strong>coconut or oat</strong> — swap for <strong>+2.50 PLN.</strong> Creamy, no compromise.">Mleko roślinne: <strong>kokosowe lub owsiane</strong> — zamiana za <strong>+2,50 zł.</strong> Kremowe, bez kompromisów.</div>
         </div>
 
+        <!-- ESPRESSO & BLACK — Cappuccino first as ANCHOR (highest perceived value) -->
         <div class="menu-section-label" data-pl="Espresso & Czarna Kawa" data-en="Espresso & Black Coffee">Espresso & Czarna Kawa</div>
 
-        <!-- Espresso -->
-        <div class="menu-item">
+        <!-- Doppio Lungo — ANCHOR: premium item first, makes everything else look reasonable -->
+        <div class="menu-item anchor">
           <div class="menu-item-left">
-            <div class="menu-item-name">Espresso</div>
-            <div class="menu-item-desc" data-pl="Czyste espresso, pojedyncza porcja" data-en="Pure espresso, single shot">Czyste espresso, pojedyncza porcja</div>
+            <div class="menu-item-name">Doppio Lungo</div>
+            <div class="menu-item-desc" data-pl="Podwójny lungo — głęboka, złożona ekstrakcja · ciemne kakao, długi finisz" data-en="Double lungo — deep, complex extraction · dark cocoa, long finish">Podwójny lungo — głęboka, złożona ekstrakcja · ciemne kakao, długi finisz</div>
+            <span class="badge-chef" data-pl="Barista's Choice" data-en="Barista's Choice">Barista's Choice</span>
           </div>
           <div class="menu-item-right">
             <div class="size-rows">
               <div class="size-row">
-                <span class="size-volume">30 ml / 1.0 oz</span>
-                <span class="size-price">9 zł</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Espresso Macchiato -->
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-name">Espresso Macchiato</div>
-            <div class="menu-item-desc" data-pl="Espresso z odrobiną spienionego mleka" data-en="Espresso with a dash of steamed milk foam">Espresso z odrobiną spienionego mleka</div>
-          </div>
-          <div class="menu-item-right">
-            <div class="size-rows">
-              <div class="size-row">
-                <span class="size-volume">40 ml / 1.4 oz</span>
-                <span class="size-price">9 zł</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Doppio -->
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-name">Doppio</div>
-            <div class="menu-item-desc" data-pl="Podwójne espresso, intensywny smak" data-en="Double espresso, intense flavour">Podwójne espresso, intensywny smak</div>
-          </div>
-          <div class="menu-item-right">
-            <div class="size-rows">
-              <div class="size-row">
-                <span class="size-volume">60 ml / 2.0 oz</span>
-                <span class="size-price">18 zł</span>
+                <span class="size-volume">180 ml / 6.1 oz</span>
+                <span class="size-price">17,90 zł</span>
               </div>
             </div>
           </div>
@@ -980,13 +1104,29 @@
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Doppio Macchiato</div>
-            <div class="menu-item-desc" data-pl="Podwójne espresso z odrobiną spienionego mleka" data-en="Double espresso with a dash of steamed milk foam">Podwójne espresso z odrobiną spienionego mleka</div>
+            <div class="menu-item-desc" data-pl="Podwójne espresso z aksamitną pianką — intensywne, z jedwabistym wykończeniem" data-en="Double espresso with velvety foam — intense, with a silky finish">Podwójne espresso z aksamitną pianką — intensywne, z jedwabistym wykończeniem</div>
           </div>
           <div class="menu-item-right">
             <div class="size-rows">
               <div class="size-row">
                 <span class="size-volume">70 ml / 2.4 oz</span>
-                <span class="size-price">18 zł</span>
+                <span class="size-price">17,90 zł</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doppio -->
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="menu-item-name">Doppio</div>
+            <div class="menu-item-desc" data-pl="Czyste podwójne espresso — surowe, bezkompromisowe, skoncentrowane" data-en="Pure double espresso — raw, uncompromising, concentrated">Czyste podwójne espresso — surowe, bezkompromisowe, skoncentrowane</div>
+          </div>
+          <div class="menu-item-right">
+            <div class="size-rows">
+              <div class="size-row">
+                <span class="size-volume">60 ml / 2.0 oz</span>
+                <span class="size-price">17,90 zł</span>
               </div>
             </div>
           </div>
@@ -996,154 +1136,178 @@
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Lungo</div>
-            <div class="menu-item-desc" data-pl="Długie espresso, łagodniejsza ekstrakcja" data-en="Long espresso, softer extraction">Długie espresso, łagodniejsza ekstrakcja</div>
+            <div class="menu-item-desc" data-pl="Długie espresso — łagodniejsza ekstrakcja, subtelna kwaskowość" data-en="Long espresso — softer extraction, subtle acidity">Długie espresso — łagodniejsza ekstrakcja, subtelna kwaskowość</div>
           </div>
           <div class="menu-item-right">
             <div class="size-rows">
               <div class="size-row">
                 <span class="size-volume">110 ml / 3.7 oz</span>
-                <span class="size-price">9 zł</span>
+                <span class="size-price">8,90 zł</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Doppio Lungo -->
+        <!-- Espresso Macchiato -->
         <div class="menu-item">
           <div class="menu-item-left">
-            <div class="menu-item-name">Doppio Lungo</div>
-            <div class="menu-item-desc" data-pl="Podwójny lungo, bogata i złożona ekstrakcja" data-en="Double lungo, rich and complex extraction">Podwójny lungo, bogata i złożona ekstrakcja</div>
+            <div class="menu-item-name">Espresso Macchiato</div>
+            <div class="menu-item-desc" data-pl="Espresso z odrobiną zimnej piany — kontrast tekstur, kawa w centrum" data-en="Espresso with a touch of cold foam — texture contrast, coffee at the centre">Espresso z odrobiną zimnej piany — kontrast tekstur, kawa w centrum</div>
           </div>
           <div class="menu-item-right">
             <div class="size-rows">
               <div class="size-row">
-                <span class="size-volume">180 ml / 6.1 oz</span>
-                <span class="size-price">18 zł</span>
+                <span class="size-volume">40 ml / 1.4 oz</span>
+                <span class="size-price">8,90 zł</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Americano -->
+        <!-- Espresso -->
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="menu-item-name">Espresso</div>
+            <div class="menu-item-desc" data-pl="Czyste espresso, pojedyncza porcja — fundament każdej dobrej kawy" data-en="Pure espresso, single shot — the foundation of every great coffee">Czyste espresso, pojedyncza porcja — fundament każdej dobrej kawy</div>
+          </div>
+          <div class="menu-item-right">
+            <div class="size-rows">
+              <div class="size-row">
+                <span class="size-volume">30 ml / 1.0 oz</span>
+                <span class="size-price">8,90 zł</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Americano — NUDGE: highlight M as recommended (decoy pricing) -->
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Americano</div>
-            <div class="menu-item-desc" data-pl="Espresso + gorąca woda · 2/3/4 shoty" data-en="Espresso + hot water · 2/3/4 shots">Espresso + gorąca woda · 2/3/4 shoty</div>
+            <div class="menu-item-desc" data-pl="Espresso + gorąca woda — czysty, klarowny smak · 2/3/4 shoty" data-en="Espresso + hot water — clean, clear flavour · 2/3/4 shots">Espresso + gorąca woda — czysty, klarowny smak · 2/3/4 shoty</div>
+            <span class="badge-popular" data-pl="Najchętniej wybierany" data-en="Most popular">Najchętniej wybierany</span>
           </div>
           <div class="menu-item-right">
             <div class="size-rows">
               <div class="size-row">
                 <span class="size-label">S</span>
                 <span class="size-volume">250 ml / 8.5 oz</span>
-                <span class="size-price">14 zł</span>
+                <span class="size-price">13,90 zł</span>
               </div>
-              <div class="size-row">
+              <div class="size-row recommended" data-nudge="↑ polecany">
                 <span class="size-label">M</span>
                 <span class="size-volume">330 ml / 11.2 oz</span>
-                <span class="size-price">18 zł</span>
+                <span class="size-price">17,90 zł</span>
               </div>
               <div class="size-row">
                 <span class="size-label">L</span>
                 <span class="size-volume">500 ml / 16.9 oz</span>
-                <span class="size-price">20 zł</span>
+                <span class="size-price">19,90 zł</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Americano z mlekiem -->
+        <!-- Americano z mlekiem — NUDGE: M recommended -->
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name" data-pl="Americano z Mlekiem" data-en="Americano with Milk">Americano z Mlekiem</div>
-            <div class="menu-item-desc" data-pl="Espresso + gorąca woda + mleko · 2/3/4 shoty" data-en="Espresso + hot water + milk · 2/3/4 shots">Espresso + gorąca woda + mleko · 2/3/4 shoty</div>
+            <div class="menu-item-desc" data-pl="Espresso + gorąca woda + jedwabiste mleko — łagodny, kremowy charakter · 2/3/4 shoty" data-en="Espresso + hot water + silky milk — smooth, creamy character · 2/3/4 shots">Espresso + gorąca woda + jedwabiste mleko — łagodny, kremowy charakter · 2/3/4 shoty</div>
           </div>
           <div class="menu-item-right">
             <div class="size-rows">
               <div class="size-row">
                 <span class="size-label">S</span>
                 <span class="size-volume">250 ml / 8.5 oz</span>
-                <span class="size-price">14 zł</span>
+                <span class="size-price">15,90 zł</span>
               </div>
-              <div class="size-row">
+              <div class="size-row recommended" data-nudge="↑ polecany">
                 <span class="size-label">M</span>
                 <span class="size-volume">330 ml / 11.2 oz</span>
-                <span class="size-price">18 zł</span>
+                <span class="size-price">19,90 zł</span>
               </div>
               <div class="size-row">
                 <span class="size-label">L</span>
                 <span class="size-volume">500 ml / 16.9 oz</span>
-                <span class="size-price">20 zł</span>
+                <span class="size-price">23,90 zł</span>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- MILK CLASSICS — Cappuccino L as anchor -->
         <div class="menu-section-label" style="margin-top:28px;" data-pl="Klasyki Mleczne" data-en="Milk Classics">Klasyki Mleczne</div>
+
+        <!-- Cappuccino — ANCHOR: L first to make M feel like great value -->
+        <div class="menu-item anchor">
+          <div class="menu-item-left">
+            <div class="menu-item-name">Cappuccino</div>
+            <div class="menu-item-desc" data-pl="Espresso + gęsta, aksamitna piana mleczna — klasyczny balans mocy i kremowości · 1/2/3 shoty" data-en="Espresso + thick, velvety milk foam — classic balance of strength and creaminess · 1/2/3 shots">Espresso + gęsta, aksamitna piana mleczna — klasyczny balans mocy i kremowości · 1/2/3 shoty</div>
+            <span class="badge-popular" data-pl="Top wybór" data-en="Top pick">Top wybór</span>
+          </div>
+          <div class="menu-item-right">
+            <div class="size-rows">
+              <div class="size-row">
+                <span class="size-label">L</span>
+                <span class="size-volume">350 ml / 11.8 oz</span>
+                <span class="size-price">23,90 zł</span>
+              </div>
+              <div class="size-row recommended" data-nudge="↑ polecany">
+                <span class="size-label">M</span>
+                <span class="size-volume">250 ml / 8.5 oz</span>
+                <span class="size-price">19,90 zł</span>
+              </div>
+              <div class="size-row">
+                <span class="size-label">S</span>
+                <span class="size-volume">150 ml / 5.1 oz</span>
+                <span class="size-price">15,90 zł</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Flat White -->
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Flat White</div>
-            <div class="menu-item-desc" data-pl="Podwójne espresso + aksamitne mleko · 2 shoty" data-en="Double espresso + velvety milk · 2 shots">Podwójne espresso + aksamitne mleko · 2 shoty</div>
+            <div class="menu-item-desc" data-pl="Podwójne espresso + mikropiana — mocniejszy smak kawy, mniej mleka · 2 shoty" data-en="Double espresso + microfoam — stronger coffee taste, less milk · 2 shots">Podwójne espresso + mikropiana — mocniejszy smak kawy, mniej mleka · 2 shoty</div>
+            <span class="badge-chef" data-pl="Specialty format" data-en="Specialty format">Specialty format</span>
           </div>
           <div class="menu-item-right">
             <div class="size-rows">
               <div class="size-row">
                 <span class="size-label">S</span>
                 <span class="size-volume">160 ml / 5.4 oz</span>
-                <span class="size-price">16 zł</span>
+                <span class="size-price">15,90 zł</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Cappuccino -->
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-name">Cappuccino</div>
-            <div class="menu-item-desc" data-pl="Espresso + spienione mleko · 1/2/3 shoty" data-en="Espresso + steamed milk foam · 1/2/3 shots">Espresso + spienione mleko · 1/2/3 shoty</div>
-          </div>
-          <div class="menu-item-right">
-            <div class="size-rows">
-              <div class="size-row">
-                <span class="size-label">S</span>
-                <span class="size-volume">150 ml / 5.1 oz</span>
-                <span class="size-price">16 zł</span>
-              </div>
-              <div class="size-row">
-                <span class="size-label">M</span>
-                <span class="size-volume">250 ml / 8.5 oz</span>
-                <span class="size-price">20 zł</span>
-              </div>
-              <div class="size-row">
-                <span class="size-label">L</span>
-                <span class="size-volume">350 ml / 11.8 oz</span>
-                <span class="size-price">24 zł</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <!-- ICED COFFEE — scarcity + sensory language -->
         <div class="menu-section-label" style="margin-top:28px;" data-pl="Kawy Mrożone" data-en="Iced Coffee">Kawy Mrożone</div>
 
-        <div class="menu-item">
+        <!-- Cold Brew — loss aversion: "parzony 18h, ograniczona partia dzienna" -->
+        <div class="menu-item anchor">
           <div class="menu-item-left">
             <div class="menu-item-name">Cold Brew</div>
-            <div class="menu-item-desc" data-pl="Parzona na zimno przez 18h · butelka PET 250 ml" data-en="Cold brewed for 18h · PET bottle 250 ml">Parzona na zimno przez 18h · butelka PET 250 ml</div>
+            <div class="menu-item-desc" data-pl="Parzona na zimno przez 18h — gładka, naturalnie słodka, zero goryczy · butelka 250 ml" data-en="Cold brewed for 18h — smooth, naturally sweet, zero bitterness · 250 ml bottle">Parzona na zimno przez 18h — gładka, naturalnie słodka, zero goryczy · butelka 250 ml</div>
             <span class="menu-item-badge" data-pl="Signature" data-en="Signature">Signature</span>
+            <span class="badge-limited" data-pl="Ograniczona partia dzienna" data-en="Limited daily batch">Ograniczona partia dzienna</span>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">17 zł</span>
+            <span class="item-price">16,90 zł</span>
           </div>
         </div>
 
+        <!-- Frappé -->
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Frappé</div>
-            <div class="menu-item-desc" data-pl="Kawa, mleko, syrop, lód · butelka PET 250 ml" data-en="Coffee, milk, syrup, ice · PET bottle 250 ml">Kawa, mleko, syrop, lód · butelka PET 250 ml</div>
+            <div class="menu-item-desc" data-pl="Kawa, mleko, syrop, kruszony lód — zimny, kremowy, intensywny · butelka 250 ml" data-en="Coffee, milk, syrup, crushed ice — cold, creamy, intense · 250 ml bottle">Kawa, mleko, syrop, kruszony lód — zimny, kremowy, intensywny · butelka 250 ml</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">20 zł</span>
+            <span class="item-price">19,90 zł</span>
           </div>
         </div>
 
@@ -1160,7 +1324,7 @@
             <span class="menu-item-badge" data-pl="Bestseller" data-en="Bestseller">Bestseller</span>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">28 zł</span>
+            <span class="item-price">27,90 zł</span>
           </div>
         </div>
 
@@ -1170,7 +1334,7 @@
             <div class="menu-item-desc" data-pl="Grillowany kurczak, sos chipotle, cheddar, jalapeño · 280g" data-en="Grilled chicken, chipotle sauce, cheddar, jalapeño · 280g">Grillowany kurczak, sos chipotle, cheddar, jalapeño · 280g</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">25 zł</span>
+            <span class="item-price">24,90 zł</span>
           </div>
         </div>
 
@@ -1180,7 +1344,7 @@
             <div class="menu-item-desc" data-pl="Panierowany kurczak, boczek, sałata, pomidor, sos ranch · 300g" data-en="Crispy chicken, bacon, lettuce, tomato, ranch sauce · 300g">Panierowany kurczak, boczek, sałata, pomidor, sos ranch · 300g</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">24 zł</span>
+            <span class="item-price">23,90 zł</span>
           </div>
         </div>
 
@@ -1191,7 +1355,7 @@
             <span class="menu-item-badge" data-pl="Vege" data-en="Vege">Vege</span>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">18 zł</span>
+            <span class="item-price">17,90 zł</span>
           </div>
         </div>
 
@@ -1204,7 +1368,7 @@
             <span class="menu-item-badge" data-pl="Fresh" data-en="Fresh">Fresh</span>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">18 zł</span>
+            <span class="item-price">17,90 zł</span>
           </div>
         </div>
 
@@ -1214,7 +1378,7 @@
             <div class="menu-item-desc" data-pl="Selekcja herbat liściastych · piramidki w materiałowych woreczkach" data-en="Selection of loose leaf teas · pyramid bags in fabric sachets">Selekcja herbat liściastych · piramidki w materiałowych woreczkach</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">10 zł</span>
+            <span class="item-price">9,90 zł</span>
           </div>
         </div>
 
@@ -1226,7 +1390,7 @@
             <div class="menu-item-desc" data-pl="Szklana butelka · 250 ml" data-en="Glass bottle · 250 ml">Szklana butelka · 250 ml</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">10 zł</span>
+            <span class="item-price">9,90 zł</span>
           </div>
         </div>
 
@@ -1236,7 +1400,7 @@
             <div class="menu-item-desc" data-pl="Szklana butelka · 250 ml" data-en="Glass bottle · 250 ml">Szklana butelka · 250 ml</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">10 zł</span>
+            <span class="item-price">9,90 zł</span>
           </div>
         </div>
 
@@ -1246,7 +1410,7 @@
             <div class="menu-item-desc" data-pl="Szklana butelka · 250 ml" data-en="Glass bottle · 250 ml">Szklana butelka · 250 ml</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">10 zł</span>
+            <span class="item-price">9,90 zł</span>
           </div>
         </div>
 
@@ -1256,7 +1420,7 @@
             <div class="menu-item-desc" data-pl="Szklana butelka · 250 ml" data-en="Glass bottle · 250 ml">Szklana butelka · 250 ml</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">10 zł</span>
+            <span class="item-price">9,90 zł</span>
           </div>
         </div>
 
@@ -1266,7 +1430,7 @@
             <div class="menu-item-desc" data-pl="Szklana butelka · 250 ml" data-en="Glass bottle · 250 ml">Szklana butelka · 250 ml</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">10 zł</span>
+            <span class="item-price">9,90 zł</span>
           </div>
         </div>
 
@@ -1276,7 +1440,7 @@
             <div class="menu-item-desc" data-pl="Szklana butelka · 250 ml" data-en="Glass bottle · 250 ml">Szklana butelka · 250 ml</div>
           </div>
           <div class="menu-item-right">
-            <span class="item-price">12 zł</span>
+            <span class="item-price">11,90 zł</span>
           </div>
         </div>
 
@@ -1993,4 +2157,5 @@
 
 </body>
 </html>
+
 
